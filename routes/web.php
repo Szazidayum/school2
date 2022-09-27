@@ -23,17 +23,25 @@ Route::get('/', function () {
 
 Route::get('/api/tasks',[TaskController::class,'index']);
 
-
+/*GET -1 /api/tasks/1 */
 Route::get('/api/tasks/{id}',[TaskController::class,'show']);
-
+/*POST /api/tasks */
 Route::post('/api/tasks',[TaskController::class,'store']);
-
+/*PUT /api/tasks/1 */
 Route::put('/api/task/{id}',[TaskController::class,'update']);
+/*DELETE /api/tasks/1 */
 Route::delete('/api/task/{id}',[TaskController::class,'destroy']);
-Route::get('/api/list',[TaskController::class,'listView']);
-Route::get('/task/edit/{id}',[TaskController::class,'editView']);
+/*User API végpontok és feladatok
+GET    -all /api/users */
+Route::get('/api/users',[UserController::class,'index']);
 
+/*VIEW - ahol megjeleníthetem az adatokat*/
+/*Task-ok listázása /task*/
 Route::get('/task/new',[TaskController::class,'newView']);
+/*Task módosítása /task/edit/1 */
+Route::get('/task/edit/{id}',[TaskController::class,'editView']);
+/*Új Task létrehozása /task/create */
+Route::get('/task/list',[TaskController::class,'listView']);
 
 Route::delete('/api/user/delete/{id}',[UserController::class, 'delete'] );
 Route::get('/api/user/{id}', [UserController::class, 'getUser']);
